@@ -3,9 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { tap } from "rxjs/operators";
-
 import { JwtHelperService } from '@auth0/angular-jwt';
-import * as moment from "moment";
 
 @Injectable({
   providedIn: 'root'
@@ -25,13 +23,9 @@ export class AuthService {
   login(userCredentials: any) {
     return this.http.post<Object>(this.API_URL + '/auth/login', userCredentials, { observe: 'response' })
       .pipe(tap((res) => {
+        localStorage.setItem('username', userCredentials.username);
         this.setSession(res.headers.get("Authorization").slice(7)) // Slice "Bearer "
       }))
-  }
-
-  findUserByUsername(username: String): Observable<Object> {
-    return this.http.get(this.API_URL + `/user/${username}`)
-      .pipe(catchError(this.errorHandler));
   }
 
   errorHandler(error: HttpErrorResponse) {
