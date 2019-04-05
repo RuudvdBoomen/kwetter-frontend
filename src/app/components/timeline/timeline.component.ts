@@ -4,6 +4,7 @@ import { User } from 'src/app/models/user';
 import { KweetComponent } from '../kweet/kweet.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { Kweet } from 'src/app/models/kweet';
 
 @Component({
   selector: 'app-timeline',
@@ -14,13 +15,15 @@ export class TimelineComponent implements OnInit {
   @ViewChild(KweetComponent)
   kweetComponent: KweetComponent;
 
-  user: User;
+  kweets: Kweet[];
 
   constructor(private userService: UserService, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     if (this.authService.isLoggedIn() && localStorage.getItem("username") != null) {
-      this.userService.getProfile(localStorage.getItem("username")).subscribe(data => this.user = data)
+      this.userService.getTimeline(localStorage.getItem("username")).subscribe(data => {
+        this.kweets = data;
+      })
     } else {
       this.router.navigateByUrl('/login');
     }

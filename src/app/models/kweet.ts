@@ -3,4 +3,5 @@ export class Kweet {
   postedOn: Date;
   content: string;
   likes: Number;
+  profileImage: String;
 }

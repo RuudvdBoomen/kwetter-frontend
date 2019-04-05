@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { User } from '../models/user';
+import { Kweet } from '../models/kweet';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,11 @@ export class UserService {
 
   getProfile(username: String): Observable<User> {
     return this.http.get<User>(this.API_URL + `/user/${username}`)
+      .pipe(catchError(this.errorHandler));
+  }
+
+  getTimeline(username: String): Observable<Kweet[]> {
+    return this.http.get<Kweet[]>(this.API_URL + `/kweet/${username}/timeline`)
       .pipe(catchError(this.errorHandler));
   }
 

@@ -1,3 +1,5 @@
-<div class="kweets" *ngFor="let kweet of user.kweets">
-  <app-kweet [parentData]="kweet"></app-kweet>
+<div *ngIf="kweets">
+  <div class="timeline" *ngFor="let kweet of kweets">
+    <app-kweet [parentData]="kweet"></app-kweet>
+  </div>
 </div>
