@@ -1,5 +1,8 @@
-<div *ngIf="kweets">
-  <div class="timeline" *ngFor="let kweet of kweets">
-    <app-kweet [parentData]="kweet"></app-kweet>
+<app-header></app-header>
+<div class="container">
+  <div *ngIf="kweets" class="timeline">
+    <div class="kweets" *ngFor="let kweet of kweets">
+      <app-kweet [parentData]="kweet"></app-kweet>
+    </div>
   </div>
 </div>

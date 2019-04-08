@@ -1,5 +1,17 @@
+.container {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+
 .timeline {
-  display: block;
+  flex: 1 1 auto;
+  background-color: rgb(230, 236, 240);
+  padding-top: 10px;
+}
+
+.kweets {
+  background-color: white;
   max-width: 500px;
   margin: 0 auto;
 }

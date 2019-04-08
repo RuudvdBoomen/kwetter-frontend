@@ -2,8 +2,8 @@ import { Kweet } from './kweet';
 
 export class User {
   username: string;
-  followerCount: Number;
-  followingCount: Number;
+  followerCount: number;
+  followingCount: number;
   email: string;
   kweets: Kweet[];
 }

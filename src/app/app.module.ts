@@ -12,13 +12,17 @@ import { AuthInterceptor } from './services/token.interceptor';
 import { LoginComponent } from './components/login/login.component';
 import { TimelineComponent } from './components/timeline/timeline.component';
 import { KweetComponent } from './components/kweet/kweet.component';
+import { HeaderComponent } from './components/header/header.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     TimelineComponent,
-    KweetComponent
+    KweetComponent,
+    HeaderComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

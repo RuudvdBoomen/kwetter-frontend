@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { UserService } from '../../services/user.service';
-import { User } from 'src/app/models/user';
 import { KweetComponent } from '../kweet/kweet.component';
+
 import { AuthService } from 'src/app/services/auth.service';
+import { UserService } from '../../services/user.service';
+
 import { Router } from '@angular/router';
 import { Kweet } from 'src/app/models/kweet';
 
@@ -22,6 +23,7 @@ export class TimelineComponent implements OnInit {
   ngOnInit() {
     if (this.authService.isLoggedIn() && localStorage.getItem("username") != null) {
       this.userService.getTimeline(localStorage.getItem("username")).subscribe(data => {
+        console.log(data);
         this.kweets = data;
       })
     } else {

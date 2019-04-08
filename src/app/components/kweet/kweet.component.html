@@ -2,5 +2,7 @@
   <div class="image"><img src="https://via.placeholder.com/80"></div>
   <div class="creator">{{kweet.createdBy}}</div>
   <div class="content">{{kweet.content}}</div>
-  <div class="likes">{{kweet.likes}}</div>
+  <div class="likes">
+    <a (click)="likeKweet()" class="like"><img src="../../../assets/twitter-like-outline.svg" height="15px"></a>
+    {{kweet.likes}}</div>
 </div>
