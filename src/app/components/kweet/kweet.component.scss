@@ -1,17 +1,18 @@
 .kweet{
   border: 1px solid rgba(211,211,211,0.2);
   overflow: hidden;
+  padding: 10px;
 }
 
 .options {
-
+  float: right;
+  cursor: pointer;
 }
 
 .image {
   margin-right: 10px;
   float: left;
   height: 80px;
-  padding: 5px 0 0 10px;
 }
 
 .image img {
@@ -20,6 +21,8 @@
 
 .creator {
   font-weight: bold;
+  cursor: pointer;
+  display: inline-block;
 }
 
 .content {

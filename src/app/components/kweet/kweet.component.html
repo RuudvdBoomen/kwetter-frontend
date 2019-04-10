@@ -1,6 +1,10 @@
-<div class="kweet">
+<div class="kweet" *ngIf="kweet">
   <div class="image"><img src="https://via.placeholder.com/50"></div>
-  <div class="creator">{{kweet.createdBy}} <div class="options"></div></div>
+  <div>
+    <div (click)="getProfile()" class="creator">{{kweet.createdBy}}</div>
+    <div class="options">
+      <img (click)="deleteKweet()" src="../../../assets/twitter-cross-2.svg"></div>
+  </div>
   <div class="content">{{kweet.content}}</div>
   <div class="likes">
     <a (click)="likeKweet()" class="like"><img src="../../../assets/twitter-like-outline.svg" height="15px"></a>

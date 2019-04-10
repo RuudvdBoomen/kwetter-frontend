@@ -21,7 +21,6 @@ export class TimelineComponent implements OnInit {
 
   kweetForm: FormGroup;
   kweets: Kweet[];
-  mentions: Kweet[];
   trendingHashtags: Hashtag[];
 
   constructor(private userService: UserService, private kweetService: KweetService,
@@ -34,16 +33,6 @@ export class TimelineComponent implements OnInit {
   ngOnInit() {
     this.getTimeline();
     this.getTrendingHashtags();
-    this.getMentions();
-  }
-
-  getMentions() {
-    if (this.checkLoggedIn()) {
-      this.kweetService.getMentions(localStorage.getItem("username")).subscribe(data => {
-        this.mentions = data;
-        console.log(data);
-      })
-    }
   }
 
   getTrendingHashtags() {

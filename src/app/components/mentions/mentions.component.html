@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="pageConent">
+    <div class="timeline">
+      <div class="kweets" *ngFor="let kweet of mentions">
+        <app-kweet [parentData]="kweet"></app-kweet>
+      </div>
+    </div>
+  </div>
+</div>

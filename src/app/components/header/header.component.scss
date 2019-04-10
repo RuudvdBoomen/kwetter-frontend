@@ -16,12 +16,14 @@
 }
 
 .logo {
+  cursor: pointer;
   position: fixed;
   left: 50%;
   right: 50%;
 }
 
 .home{
+  cursor: pointer;
   line-height: 16px;
   &:before {
     content: "";
@@ -34,6 +36,7 @@
 }
 
 .mentions {
+  cursor: pointer;
   margin-right: auto;
   margin-left: 15px;
   line-height: 16px;
@@ -54,6 +57,7 @@
 }
 
 .account {
+  cursor: pointer;
   float: right;
   margin: 0;
   padding: 0;

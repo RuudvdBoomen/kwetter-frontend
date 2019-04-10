@@ -1,11 +1,13 @@
-.container {
-  display: flex;
-  align-content: center;
+.blueBar {
+  margin-top: 42px;
+  height: 42px;
+  width: 100%;
+  background-color: #1DA1F2;
 }
 
 .pageConent {
-  padding-top: 50px;
-  width: 900px;
+  padding-top: 10px;
+  width: 1000px;
   margin: 0 auto 0 auto;
 }
 
@@ -22,7 +24,10 @@
 
 .profile {
   float: left;
-  max-width: 200px;
+  margin-right: 10px;
+  width: 220px;
+  background-color: white;
+  padding: 10px;
 }
 
 

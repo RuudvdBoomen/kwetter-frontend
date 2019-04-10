@@ -1,8 +1,10 @@
-<app-header></app-header>
 <div class="container">
-  <div class="pageConent">
+  <div class="blueBar"></div>
+  <div class="pageConent" *ngIf="user">
     <div class="profile">
-      <p>{{user.username}}</p>
+      <p><b>{{user.username}}</b></p>
+      <p>followers: {{user.followerCount}}</p>
+      <p>following: {{user.followingCount}}</p>
     </div>
     <div class="timeline" *ngIf="user">
       <div class="kweets" *ngFor="let kweet of user.kweets">

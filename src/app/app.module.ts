@@ -14,7 +14,7 @@ import { TimelineComponent } from './components/timeline/timeline.component';
 import { KweetComponent } from './components/kweet/kweet.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { MentionsComponent } from './mentions/mentions.component';
+import { MentionsComponent } from './components/mentions/mentions.component';
 
 @NgModule({
   declarations: [

@@ -20,6 +20,11 @@ export class KweetService {
       .pipe(catchError(this.errorHandler));
   }
 
+  deleteKweet(id: Number): Observable<Response> {
+    return this.http.delete<Response>(this.API_URL + `/kweet/${id}`)
+      .pipe(catchError(this.errorHandler));
+  }
+
   createKweet(kweet: Object, username: String): Observable<Response> {
     return this.http.post<Response>(this.API_URL + `/kweet/${username}`, kweet)
       .pipe(catchError(this.errorHandler));
