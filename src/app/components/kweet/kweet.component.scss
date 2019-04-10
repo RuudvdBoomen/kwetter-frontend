@@ -3,10 +3,19 @@
   overflow: hidden;
 }
 
+.options {
+
+}
+
 .image {
   margin-right: 10px;
   float: left;
   height: 80px;
+  padding: 5px 0 0 10px;
+}
+
+.image img {
+  border-radius: 50px;
 }
 
 .creator {
@@ -15,6 +24,9 @@
 
 .content {
   padding : 10px 5px 10px 0;
+}
+
+.likes {
 }
 
 .like {

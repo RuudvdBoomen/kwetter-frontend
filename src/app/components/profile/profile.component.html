@@ -1,4 +1,13 @@
 <app-header></app-header>
-<p>
-  profile works!
-</p>
+<div class="container">
+  <div class="pageConent">
+    <div class="profile">
+      <p>{{user.username}}</p>
+    </div>
+    <div class="timeline" *ngIf="user">
+      <div class="kweets" *ngFor="let kweet of user.kweets">
+        <app-kweet [parentData]="kweet"></app-kweet>
+      </div>
+    </div>
+  </div>
+</div>

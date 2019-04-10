@@ -6,8 +6,31 @@
 
 .timeline {
   flex: 1 1 auto;
-  background-color: rgb(230, 236, 240);
-  padding-top: 10px;
+}
+
+.page-container {
+  padding-top: 50px;
+  width: 1000px;
+  margin: 0 auto 0 auto;
+}
+
+.hashtags {
+  background-color: white;
+  width: 220px;
+  margin-right: 10px;
+  padding-left: 20px;
+  float: left;
+  padding-bottom: 20px;
+}
+
+.tag {
+  font-weight: bold;
+  color: #1DA1F2;
+}
+
+.used {
+  font-size: 0.8em;
+  color: #657786;
 }
 
 .kweets {
@@ -15,3 +38,32 @@
   max-width: 500px;
   margin: 0 auto;
 }
+
+.kweetForm {
+  padding: 10px 0;
+  background-color: white;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.kweetInput {
+  max-width: 480px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  margin: 10px 10px 10px 10px;
+}
+
+.createKweet {
+  background-color: rgb(74, 179, 244);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  border: none;
+  margin-left: auto;
+  margin-right: 10px;
+  max-width: 80px;
+}
+
+

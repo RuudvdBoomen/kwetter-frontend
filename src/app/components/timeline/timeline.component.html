@@ -1,8 +1,23 @@
 <app-header></app-header>
 <div class="container">
-  <div *ngIf="kweets" class="timeline">
-    <div class="kweets" *ngFor="let kweet of kweets">
-      <app-kweet [parentData]="kweet"></app-kweet>
+  <div class="page-container">
+    <div class="hashtags">
+      <h3>Trends for you</h3>
+      <div *ngFor="let hashtag of trendingHashtags">
+        <div class="tag">#{{hashtag.name}}</div>
+        <div class="used">{{hashtag.timesUsed}} Tweets</div>
+      </div>
+    </div>
+    <div class="timeline" *ngIf="kweets">
+      <div class="newKweet">
+        <form class="kweetForm" [formGroup]="kweetForm" (ngSubmit)="createKweet()">
+          <input class="kweetInput" formControlName="kweet" placeholder="What's happening?">
+          <input class="createKweet" type="submit" value="Kweet" />
+        </form>
+      </div>
+      <div class="kweets" *ngFor="let kweet of kweets">
+        <app-kweet [parentData]="kweet"></app-kweet>
+      </div>
     </div>
   </div>
 </div>

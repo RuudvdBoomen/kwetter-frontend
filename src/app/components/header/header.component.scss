@@ -1,19 +1,51 @@
-.header{
+.header {
+  position: fixed;
+  top: 0px;
   flex: 0 1 auto;
-  max-width: 1000px;
-  margin: 0 auto;
   width: 100%;
   text-align: center;
-  padding: 15px 0 15px 0;
+  padding: 5px 0 5px 0;
+  background-color: white;
 }
 
-.logo{
-  margin-left: auto;
+.content {
+  margin: 0 auto;
+  max-width: 1000px;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  position: fixed;
+  left: 50%;
+  right: 50%;
+}
+
+.home{
+  line-height: 16px;
+  &:before {
+    content: "";
+    float: left;
+    display: block;
+    background: url("../../../assets/twitter-home.svg") no-repeat;
+    width: 22px;
+    height: 22px;
+  }
+}
+
+.mentions {
   margin-right: auto;
+  margin-left: 15px;
+  line-height: 16px;
 }
 
-.home {
+.mentions::before{
+  content: "";
   float: left;
+  display: block;
+  background: url("../../../assets/twitter-alert.svg") no-repeat;
+  width: 22px;
+  height: 22px;
 }
 
 .header a {
@@ -23,4 +55,34 @@
 
 .account {
   float: right;
+  margin: 0;
+  padding: 0;
+}
+
+.account img {
+  vertical-align: middle;
+}
+
+.accountLogo {
+  background-color: rgb(230, 236, 240);
+  padding: 8px 10px 8px 10px  ;
+  border-radius: 50px;
+}
+
+.search {
+  background-color:#f5f8fa;
+  text-align: center;
+  margin-left: auto;
+  border-radius: 20px;
+  margin-right: 10px;
+  border: 0px;
+  color: grey;
+  width: 200px;
+  height: 30px;
+  box-sizing: border-box;
+  padding: 6px 10px 6px 10px  ;
+  &:focus{
+    border: 2px solid #4AB3F4 ;
+    background-color: white;
+  }
 }
