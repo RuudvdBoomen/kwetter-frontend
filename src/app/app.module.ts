@@ -15,6 +15,7 @@ import { KweetComponent } from './components/kweet/kweet.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { MentionsComponent } from './components/mentions/mentions.component';
+import { UsersModalComponent } from './components/users-modal/users-modal.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MentionsComponent } from './components/mentions/mentions.component';
     KweetComponent,
     HeaderComponent,
     ProfileComponent,
-    MentionsComponent
+    MentionsComponent,
+    UsersModalComponent
   ],
   imports: [
     BrowserModule,

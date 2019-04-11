@@ -1,10 +1,12 @@
-<div class="container">
+<div>
   <div class="blueBar"></div>
   <div class="pageConent" *ngIf="user">
     <div class="profile">
-      <p><b>{{user.username}}</b></p>
-      <p>followers: {{user.followerCount}}</p>
-      <p>following: {{user.followingCount}}</p>
+      <div class="username"><b>{{user.username}}</b></div>
+      <button *ngIf="showFollow()" (click)="follow()"
+        class="follow">{{ isFollowing ? 'Unfollow' : 'Follow' }}</button><br />
+      <a (click)="popup('followers')" data-toggle="modal" data-target="#exampleModal">followers: {{user.followerCount}}</a><br />
+      <a (click)="popup('following')" data-toggle="modal" data-target="#exampleModal"> following: {{user.followingCount}}</a>
     </div>
     <div class="timeline" *ngIf="user">
       <div class="kweets" *ngFor="let kweet of user.kweets">
@@ -13,3 +15,4 @@
     </div>
   </div>
 </div>
+<app-users-modal></app-users-modal>

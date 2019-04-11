@@ -1,10 +1,10 @@
-<div class="container">
+<div>
   <div class="page-container">
     <div class="hashtags">
       <h3>Trends for you</h3>
       <div *ngFor="let hashtag of trendingHashtags">
         <div class="tag">#{{hashtag.name}}</div>
-        <div class="used">{{hashtag.timesUsed}} Tweets</div>
+        <div class="used">{{hashtag.timesUsed}} {{ hashtag.timesUsed == 1 ? 'Tweet' : 'Tweets' }}</div>
       </div>
     </div>
     <div class="timeline" *ngIf="kweets">
