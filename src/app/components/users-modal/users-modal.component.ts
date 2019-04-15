@@ -16,18 +16,19 @@ export class UsersModalComponent implements OnInit {
   ngOnInit() {
   }
 
-  initFollowing() {
+  initFollowing(username: string) {
     this.title = 'Following'
-    this.userService.getFollowing(localStorage.getItem("username")).subscribe(data => this.users = data);
+    this.userService.getFollowing(username).subscribe(data => this.users = data);
   }
 
-  initFollowers() {
+  initFollowers(username: string) {
     this.title = 'Followers'
-    this.userService.getFollowers(localStorage.getItem("username")).subscribe(data => this.users = data);
+    this.userService.getFollowers(username).subscribe(data => {
+      this.users = data;
+    });
   }
 
   getProfile(user: string) {
-    console.log('hoi' + user)
     this.router.navigateByUrl('/profile/' + user);
   }
 

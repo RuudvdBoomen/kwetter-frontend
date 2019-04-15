@@ -13,8 +13,8 @@ export class AppComponent {
 
   constructor(private router: Router) { }
 
-  loginPage(): boolean {
-    return this.router.url == '/login';
+  headerPage(): boolean {
+    return this.router.url == '/timeline' || this.router.url == '/mentions' || this.router.url.startsWith('/profile');
   }
 
 }

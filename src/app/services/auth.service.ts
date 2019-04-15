@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -9,13 +9,12 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   providedIn: 'root'
 })
 export class AuthService {
+
   jwtHelper: JwtHelperService = new JwtHelperService();
 
-  API_URL = 'http://localhost:8080/Kwetter/api'
+  constructor(private http: HttpClient, @Inject('API_URL') private API_URL: string) { }
 
-  constructor(private http: HttpClient) { }
-
-  registerUser(user: any): Observable<Object> {
+  register(user: any): Observable<Object> {
     return this.http.post(this.API_URL + '/auth/register', user)
       .pipe(catchError(this.errorHandler));
   }
@@ -26,6 +25,11 @@ export class AuthService {
         localStorage.setItem('username', userCredentials.username);
         this.setSession(res.headers.get("Authorization").slice(7)) // Slice "Bearer "
       }))
+  }
+
+  verify(key: any): Observable<Object> {
+    return this.http.put(this.API_URL + `/auth/register/verify/${key}`, {})
+      .pipe(catchError(this.errorHandler));
   }
 
   errorHandler(error: HttpErrorResponse) {

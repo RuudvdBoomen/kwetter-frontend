@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -10,9 +10,7 @@ import { Kweet } from '../models/kweet';
 })
 export class UserService {
 
-  API_URL = 'http://localhost:8080/Kwetter/api'
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, @Inject('API_URL') private API_URL: string) { }
 
   getProfile(username: string): Observable<User> {
     return this.http.get<User>(this.API_URL + `/user/${username}`)
@@ -24,7 +22,7 @@ export class UserService {
       .pipe(catchError(this.errorHandler));
   }
 
-  follow(username: string, userToFollow:string): Observable<Response> {
+  follow(username: string, userToFollow: string): Observable<Response> {
     return this.http.put<Response>(this.API_URL + `/user/${username}/following/add/${userToFollow}`, {})
       .pipe(catchError(this.errorHandler));
   }

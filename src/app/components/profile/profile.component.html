@@ -5,8 +5,8 @@
       <div class="username"><b>{{user.username}}</b></div>
       <button *ngIf="showFollow()" (click)="follow()"
         class="follow">{{ isFollowing ? 'Unfollow' : 'Follow' }}</button><br />
-      <a (click)="popup('followers')" data-toggle="modal" data-target="#exampleModal">followers: {{user.followerCount}}</a><br />
-      <a (click)="popup('following')" data-toggle="modal" data-target="#exampleModal"> following: {{user.followingCount}}</a>
+      <a (click)="popup('followers')" data-toggle="modal" data-target="#exampleModal">Followers: {{user.followerCount}}</a><br />
+      <a (click)="popup('following')" data-toggle="modal" data-target="#exampleModal"> Following: {{user.followingCount}}</a>
     </div>
     <div class="timeline" *ngIf="user">
       <div class="kweets" *ngFor="let kweet of user.kweets">

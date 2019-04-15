@@ -17,6 +17,13 @@ export class KweetComponent implements OnInit {
   ngOnInit() {
   }
 
+  owner(): boolean {
+    if (this.kweet.createdBy == localStorage.getItem("username")) {
+      return true
+    }
+    return false;
+  }
+
   likeKweet() {
     if (localStorage.getItem("username") != null) {
       this.kweetService.likeKweet(this.kweet.id, localStorage.getItem("username"))

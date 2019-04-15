@@ -38,7 +38,6 @@ export class TimelineComponent implements OnInit {
   getTrendingHashtags() {
     this.kweetService.getTrendingHashtags().subscribe(data => {
       this.trendingHashtags = data;
-      console.log(data)
     }, error => { })
   }
 

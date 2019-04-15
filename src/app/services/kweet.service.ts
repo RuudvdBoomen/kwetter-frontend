@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -11,9 +11,8 @@ import { Hashtag } from '../models/hashtag';
 })
 export class KweetService {
 
-  API_URL = 'http://localhost:8080/Kwetter/api'
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, @Inject('API_URL') private API_URL: string) { }
 
   likeKweet(id: Number, username: String): Observable<Response> {
     return this.http.put<Response>(this.API_URL + `/kweet/${id}/like/${username}`, {})

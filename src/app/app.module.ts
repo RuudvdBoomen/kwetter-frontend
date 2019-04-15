@@ -16,6 +16,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { MentionsComponent } from './components/mentions/mentions.component';
 import { UsersModalComponent } from './components/users-modal/users-modal.component';
+import { environment } from 'src/environments/environment';
+import { RegisterComponent } from './components/register/register.component';
+import { VerifyComponent } from './components/verify/verify.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,9 @@ import { UsersModalComponent } from './components/users-modal/users-modal.compon
     HeaderComponent,
     ProfileComponent,
     MentionsComponent,
-    UsersModalComponent
+    UsersModalComponent,
+    RegisterComponent,
+    VerifyComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +39,8 @@ import { UsersModalComponent } from './components/users-modal/users-modal.compon
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  { provide: 'API_URL', useValue: environment.API_URL }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

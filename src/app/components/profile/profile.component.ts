@@ -51,9 +51,9 @@ export class ProfileComponent implements OnInit {
 
   popup(type: string) {
     if (type == 'following') {
-      this.child.initFollowing();
+      this.child.initFollowing(this.username);
     } else if (type == 'followers') {
-      this.child.initFollowers();
+      this.child.initFollowers(this.username);
     }
   }
 

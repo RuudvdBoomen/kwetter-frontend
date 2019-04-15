@@ -2,7 +2,7 @@
   <div class="image"><img src="https://via.placeholder.com/50"></div>
   <div>
     <div (click)="getProfile()" class="creator">{{kweet.createdBy}}</div>
-    <div class="options">
+    <div class="options" *ngIf="owner()">
       <img (click)="deleteKweet()" src="../../../assets/twitter-cross-2.svg"></div>
   </div>
   <div class="content">{{kweet.content}}</div>
