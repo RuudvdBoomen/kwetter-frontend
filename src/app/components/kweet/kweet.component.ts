@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Kweet } from 'src/app/models/kweet';
 
-import { KweetService } from 'src/app/services/kweet.service';
+import { KweetService } from 'src/app/services/kweet/kweet.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -38,7 +38,6 @@ export class KweetComponent implements OnInit {
       this.kweetService.deleteKweet(this.kweet.id)
         .subscribe(data => {
           delete this.kweet;
-          console.log(this.kweet);
         }, error => { })
     } else {
       console.log('your not logged in')

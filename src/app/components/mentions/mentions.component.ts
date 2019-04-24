@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { KweetService } from 'src/app/services/kweet.service';
-import { AuthService } from 'src/app/services/auth.service';
+import { KweetService } from 'src/app/services/kweet/kweet.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { Router } from '@angular/router';
 import { Kweet } from 'src/app/models/kweet';
 

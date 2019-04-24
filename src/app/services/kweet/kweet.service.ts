@@ -1,18 +1,34 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { throwError, Observable } from 'rxjs';
+import { throwError, Observable, Subject } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { catchError } from 'rxjs/operators';
-import { User } from '../models/user';
-import { Kweet } from '../models/kweet';
-import { Hashtag } from '../models/hashtag';
+import { Kweet } from '../../models/kweet';
+import { Hashtag } from '../../models/hashtag';
+import { WebsocketService } from '../websocket/websocket.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class KweetService {
+  public newKweets: Subject<Kweet>;
 
-
-  constructor(private http: HttpClient, @Inject('API_URL') private API_URL: string) { }
+  constructor(private http: HttpClient, @Inject('API_URL') private API_URL: string,
+    wsService: WebsocketService) {
+      this.newKweets = <Subject<Kweet>>wsService.connect("ws://localhost:8080/Kwetter/websocket").pipe(map(
+      (response: MessageEvent): Kweet => {
+        let data = JSON.parse(response.data);
+        return {
+          id: data.id,
+          content: data.content,
+          createdBy: data.username,
+          likes: data.likes,
+          postedOn: data.postedOn,
+          profileImage: null
+        };
+      }
+    ));
+  }
 
   likeKweet(id: Number, username: String): Observable<Response> {
     return this.http.put<Response>(this.API_URL + `/kweet/${id}/like/${username}`, {})

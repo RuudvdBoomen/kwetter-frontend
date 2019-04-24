@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { UserService } from 'src/app/services/user.service';
+import { UserService } from 'src/app/services/user/user.service';
 import { Router } from '@angular/router';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-users-modal',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class UsersModalComponent implements OnInit {
   title: string;
-  users: string[];
+  users: User[];
 
   constructor(private userService: UserService, private router: Router) { }
 
@@ -28,8 +29,8 @@ export class UsersModalComponent implements OnInit {
     });
   }
 
-  getProfile(user: string) {
-    this.router.navigateByUrl('/profile/' + user);
+  getProfile(user: User) {
+    this.router.navigateByUrl('/profile/' + user.username);
   }
 
 }

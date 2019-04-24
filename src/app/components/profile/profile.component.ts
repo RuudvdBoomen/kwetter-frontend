@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
-import { UserService } from '../../services/user.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { UserService } from '../../services/user/user.service';
 import { User } from 'src/app/models/user';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
@@ -45,8 +45,9 @@ export class ProfileComponent implements OnInit {
 
   follow() {
     this.userService.follow(localStorage.getItem("username"), this.username).subscribe(data => {
+      this.isFollowing = true;
+      this.initUserData();
     }, error => { })
-    this.isFollowing = true;
   }
 
   popup(type: string) {
@@ -63,7 +64,12 @@ export class ProfileComponent implements OnInit {
 
   following() {
     this.userService.getFollowers(this.username).subscribe(data => {
-      this.isFollowing = data.indexOf(localStorage.getItem("username")) > -1
+      this.isFollowing = false;
+      data.forEach(user => {
+        if (user.username == localStorage.getItem("username")) {
+          this.isFollowing = true;
+        }
+      });
     }, error => { })
     this.isFollowing = false;
   }

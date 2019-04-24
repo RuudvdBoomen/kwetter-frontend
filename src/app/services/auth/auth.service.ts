@@ -33,6 +33,7 @@ export class AuthService {
   }
 
   errorHandler(error: HttpErrorResponse) {
+    console.log('kuttt')
     return throwError(error.error || 'Server error');
   }
 

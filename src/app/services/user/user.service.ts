@@ -2,8 +2,8 @@ import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { User } from '../models/user';
-import { Kweet } from '../models/kweet';
+import { User } from '../../models/user';
+import { Kweet } from '../../models/kweet';
 
 @Injectable({
   providedIn: 'root'
@@ -27,13 +27,13 @@ export class UserService {
       .pipe(catchError(this.errorHandler));
   }
 
-  getFollowers(username: string): Observable<string[]> {
-    return this.http.get<string[]>(this.API_URL + `/user/${username}/followers`)
+  getFollowers(username: string): Observable<User[]> {
+    return this.http.get<User[]>(this.API_URL + `/user/${username}/followers`)
       .pipe(catchError(this.errorHandler));
   }
 
-  getFollowing(username: string): Observable<string[]> {
-    return this.http.get<string[]>(this.API_URL + `/user/${username}/following`)
+  getFollowing(username: string): Observable<User[]> {
+    return this.http.get<User[]>(this.API_URL + `/user/${username}/following`)
       .pipe(catchError(this.errorHandler));
   }
 
