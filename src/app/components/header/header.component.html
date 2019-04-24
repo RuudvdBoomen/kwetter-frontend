@@ -4,6 +4,13 @@
     <a (click)="nav('mentions')" class="mentions">Mentions</a>
     <a (click)="nav('timeline')" class="logo"><img src="../../../assets/twitterlogo.png" height="17px"></a>
     <input class="search" placeholder="Search Kwetter">
-    <a (click)="nav('profile')" class="account"><img class="accountLogo" src="../../../assets/twitter-profile-2.svg"></a>
+    <div class="dropdown">
+      <a (click)="nav('profile')" class="account"><img class="accountLogo"
+          src="../../../assets/twitter-profile-2.svg"></a>
+      <div class="dropDownItems">
+        <a (click)="nav('profile')">Profile</a><br>
+        <a (click)="nav('login')">Logout</a>
+      </div>
+    </div>
   </div>
 </div>
