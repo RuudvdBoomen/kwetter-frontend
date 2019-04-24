@@ -6,6 +6,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { MentionsComponent } from './components/mentions/mentions.component';
 import { RegisterComponent } from './components/register/register.component';
 import { VerifyComponent } from './components/verify/verify.component';
+import { SearchComponent } from './components/search/search.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'timeline', component: TimelineComponent },
   { path: 'profile/:username', component: ProfileComponent },
   { path: 'mentions', component: MentionsComponent },
+  { path: 'search/:search', component: SearchComponent },
 ];
 
 @NgModule({

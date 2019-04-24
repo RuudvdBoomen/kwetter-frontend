@@ -16,14 +16,9 @@ import { Hashtag } from 'src/app/models/hashtag';
   styleUrls: ['./timeline.component.scss']
 })
 export class TimelineComponent implements OnInit {
-  @ViewChild(KweetComponent)
-  kweetComponent: KweetComponent;
-
   kweetForm: FormGroup;
   kweets: Kweet[];
   trendingHashtags: Hashtag[];
-
-
 
   constructor(private userService: UserService, private kweetService: KweetService,
     private authService: AuthService, private router: Router, private formBuilder: FormBuilder) {

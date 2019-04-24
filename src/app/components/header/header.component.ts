@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-header',
@@ -7,8 +8,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  searchForm: FormGroup;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private formBuilder: FormBuilder) {
+    this.searchForm = this.formBuilder.group({
+      search: ['', Validators.required],
+    })
+  }
 
   ngOnInit() {
   }
@@ -21,6 +27,13 @@ export class HeaderComponent implements OnInit {
     } else {
       this.router.navigateByUrl('/' + url);
     }
+  }
+
+  search() {
+    if (this.searchForm.invalid) {
+      return;
+    }
+    this.router.navigateByUrl('/search/' + this.searchForm.controls.search.value);
   }
 
 }

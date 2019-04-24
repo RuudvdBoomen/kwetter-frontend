@@ -1,0 +1,8 @@
+<div>
+  <div class="pageConent">
+    <div class="timeline">
+      <h1 *ngIf="searchResults == undefined">No search results found :(</h1>
+      <app-kweets [parentData]="searchResults"></app-kweets>
+    </div>
+  </div>
+</div>

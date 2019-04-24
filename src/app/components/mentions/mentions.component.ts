@@ -21,7 +21,6 @@ export class MentionsComponent implements OnInit {
 
   getMentions() {
     if (this.checkLoggedIn()) {
-      console.log(localStorage.getItem("username"))
       this.kweetService.getMentions(localStorage.getItem("username")).subscribe(data => {
         this.mentions = data;
       })

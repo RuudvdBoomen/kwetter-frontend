@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  align-content: center;
+}
+
+.pageConent {
+  padding-top: 50px;
+  width: 1000px;
+  margin: 0 auto 0 auto;
+}
+
+.timeline {
+  flex: 1 1 auto;
+  background-color: rgb(230, 236, 240);
+}
+
+.kweets {
+  background-color: white;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+}

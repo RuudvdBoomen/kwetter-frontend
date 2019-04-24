@@ -19,6 +19,8 @@ import { UsersModalComponent } from './components/users-modal/users-modal.compon
 import { environment } from 'src/environments/environment';
 import { RegisterComponent } from './components/register/register.component';
 import { VerifyComponent } from './components/verify/verify.component';
+import { KweetsComponent } from './components/kweets/kweets.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { VerifyComponent } from './components/verify/verify.component';
     MentionsComponent,
     UsersModalComponent,
     RegisterComponent,
-    VerifyComponent
+    VerifyComponent,
+    KweetsComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

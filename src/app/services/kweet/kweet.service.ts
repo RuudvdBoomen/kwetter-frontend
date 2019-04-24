@@ -11,6 +11,7 @@ import { WebsocketService } from '../websocket/websocket.service';
   providedIn: 'root'
 })
 export class KweetService {
+
   public newKweets: Subject<Kweet>;
 
   constructor(private http: HttpClient, @Inject('API_URL') private API_URL: string,
@@ -43,6 +44,11 @@ export class KweetService {
   createKweet(kweet: Object, username: String): Observable<Response> {
     return this.http.post<Response>(this.API_URL + `/kweet/${username}`, kweet)
       .pipe(catchError(this.errorHandler));
+  }
+
+  getKweetByContent(content: String) {
+    return this.http.get<Kweet[]>(this.API_URL + `/kweet/${content}`)
+    .pipe(catchError(this.errorHandler));
   }
 
   getTrendingHashtags(): Observable<Hashtag[]> {

@@ -14,9 +14,7 @@
           <input class="createKweet" type="submit" value="Kweet" />
         </form>
       </div>
-      <div class="kweets" *ngFor="let kweet of kweets">
-        <app-kweet [parentData]="kweet"></app-kweet>
-      </div>
+      <app-kweets [parentData]="kweets"></app-kweets>
     </div>
   </div>
 </div>
