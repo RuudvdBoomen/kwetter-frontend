@@ -11,6 +11,7 @@ import { formatDate, DatePipe } from '@angular/common';
   styleUrls: ['./kweet.component.scss']
 })
 export class KweetComponent implements OnInit {
+  // tslint:disable-next-line:no-input-rename
   @Input('parentData') public kweet: Kweet;
 
   constructor(private kweetService: KweetService, private router: Router) { }
@@ -20,7 +21,7 @@ export class KweetComponent implements OnInit {
   }
 
   owner(): boolean {
-    if (this.kweet.createdBy == localStorage.getItem('username')) {
+    if (this.kweet.createdBy === localStorage.getItem('username')) {
       return true;
     }
     return false;

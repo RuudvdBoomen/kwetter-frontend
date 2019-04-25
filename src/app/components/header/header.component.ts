@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
   }
 
   nav(url: string) {
-    if (url == 'profile') {
+    if (url === 'profile') {
       if (localStorage.getItem('username') != null) {
         this.router.navigateByUrl('/profile/' + localStorage.getItem('username'));
       }

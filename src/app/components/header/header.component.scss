@@ -69,7 +69,7 @@
   z-index: 1;
   display: flex;
   flex-direction: column;
-  height: 60px;
+  height: 70px;
   width: 100px;
 }
 
@@ -78,6 +78,8 @@
   margin: 32px 0 0 10px;
   background-color: white;
   border-radius: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .dropDownItems a {
@@ -85,7 +87,8 @@
   flex: 1;
   line-height: 30px;
   &:hover{
-    text-decoration: underline;
+    background-color: #1DA1F2;
+    color: white;
   }
 }
 

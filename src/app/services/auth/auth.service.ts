@@ -14,26 +14,25 @@ export class AuthService {
 
   constructor(private http: HttpClient, @Inject('API_URL') private API_URL: string) { }
 
-  register(user: any): Observable<Object> {
+  register(user: any): Observable<object> {
     return this.http.post(this.API_URL + '/auth/register', user)
       .pipe(catchError(this.errorHandler));
   }
 
   login(userCredentials: any) {
-    return this.http.post<Object>(this.API_URL + '/auth/login', userCredentials, { observe: 'response' })
+    return this.http.post<object>(this.API_URL + '/auth/login', userCredentials, { observe: 'response' })
       .pipe(tap((res) => {
         localStorage.setItem('username', userCredentials.username);
         this.setSession(res.headers.get('Authorization').slice(7)); // Slice "Bearer "
       }));
   }
 
-  verify(key: any): Observable<Object> {
+  verify(key: any): Observable<object> {
     return this.http.put(this.API_URL + `/auth/register/verify/${key}`, {})
       .pipe(catchError(this.errorHandler));
   }
 
   errorHandler(error: HttpErrorResponse) {
-    console.log('kuttt');
     return throwError(error.error || 'Server error');
   }
 

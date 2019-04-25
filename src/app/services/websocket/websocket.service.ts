@@ -27,7 +27,7 @@ export class WebsocketService {
       return ws.close.bind(ws);
     });
     const observer = {
-      next: (data: Object) => {
+      next: (data: object) => {
         if (ws.readyState === WebSocket.OPEN) {
           ws.send(JSON.stringify(data));
         }

@@ -2,7 +2,7 @@ import { Kweet } from './kweet';
 
 export class Hashtag {
   id: number;
-  name: String;
+  name: string;
   lastUsed: Date;
   timesUsed: number;
   kweets: Kweet[];

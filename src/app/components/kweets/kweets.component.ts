@@ -7,6 +7,7 @@ import { Kweet } from 'src/app/models/kweet';
   styleUrls: ['./kweets.component.scss']
 })
 export class KweetsComponent implements OnInit {
+  // tslint:disable-next-line:no-input-rename
   @Input('parentData') public kweets: Kweet[];
 
   constructor() { }

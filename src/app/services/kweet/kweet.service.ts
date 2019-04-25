@@ -31,22 +31,22 @@ export class KweetService {
     )) as Subject<Kweet>;
   }
 
-  likeKweet(id: Number, username: String): Observable<Response> {
+  likeKweet(id: number, username: string): Observable<Response> {
     return this.http.put<Response>(this.API_URL + `/kweet/${id}/like/${username}`, {})
       .pipe(catchError(this.errorHandler));
   }
 
-  deleteKweet(id: Number): Observable<Response> {
+  deleteKweet(id: number): Observable<Response> {
     return this.http.delete<Response>(this.API_URL + `/kweet/${id}`)
       .pipe(catchError(this.errorHandler));
   }
 
-  createKweet(kweet: Object, username: String): Observable<Response> {
+  createKweet(kweet: object, username: string): Observable<Response> {
     return this.http.post<Response>(this.API_URL + `/kweet/${username}`, kweet)
       .pipe(catchError(this.errorHandler));
   }
 
-  getKweetByContent(content: String) {
+  getKweetByContent(content: string) {
     return this.http.get<Kweet[]>(this.API_URL + `/kweet/${content}`)
     .pipe(catchError(this.errorHandler));
   }
@@ -56,7 +56,7 @@ export class KweetService {
       .pipe(catchError(this.errorHandler));
   }
 
-  getMentions(username: String): Observable<Kweet[]> {
+  getMentions(username: string): Observable<Kweet[]> {
     return this.http.get<Kweet[]>(this.API_URL + `/kweet/${username}/mentions`)
       .pipe(catchError(this.errorHandler));
   }

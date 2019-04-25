@@ -27,6 +27,11 @@ export class UserService {
       .pipe(catchError(this.errorHandler));
   }
 
+  unfollow(username: string, userToUnfollow: string): Observable<Response> {
+    return this.http.put<Response>(this.API_URL + `/user/${username}/following/remove/${userToUnfollow}`, {})
+      .pipe(catchError(this.errorHandler));
+  }
+
   getFollowers(username: string): Observable<User[]> {
     return this.http.get<User[]>(this.API_URL + `/user/${username}/followers`)
       .pipe(catchError(this.errorHandler));

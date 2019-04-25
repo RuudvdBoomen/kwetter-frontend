@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
 
-    if (this.messageForm.invalid || this.messageForm.controls.password.value != this.messageForm.controls.passwordRepeat.value) {
+    if (this.messageForm.invalid || this.messageForm.controls.password.value !== this.messageForm.controls.passwordRepeat.value) {
       return;
     }
 

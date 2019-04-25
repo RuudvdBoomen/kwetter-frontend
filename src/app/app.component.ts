@@ -14,7 +14,7 @@ export class AppComponent {
   constructor(private router: Router) { }
 
   headerPage(): boolean {
-    return this.router.url == '/timeline' || this.router.url == '/mentions' ||
+    return this.router.url === '/timeline' || this.router.url === '/mentions' ||
     this.router.url.startsWith('/profile') || this.router.url.startsWith('/search');
   }
 

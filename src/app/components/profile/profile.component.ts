@@ -19,8 +19,7 @@ export class ProfileComponent implements OnInit {
   isFollowing: boolean;
   type: string;
 
-  constructor(private userService: UserService, private authService: AuthService,
-              private route: ActivatedRoute, private router: Router) { }
+  constructor(private userService: UserService, private authService: AuthService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
@@ -44,29 +43,36 @@ export class ProfileComponent implements OnInit {
   }
 
   follow() {
-    this.userService.follow(localStorage.getItem('username'), this.username).subscribe(data => {
-      this.isFollowing = true;
-      this.initUserData();
-    }, error => { });
+    if (!this.isFollowing) {
+      this.userService.follow(localStorage.getItem('username'), this.username).subscribe(data => {
+        this.isFollowing = true;
+        this.initUserData();
+      }, error => { });
+    } else {
+      this.userService.unfollow(localStorage.getItem('username'), this.username).subscribe(data => {
+        this.isFollowing = false;
+        this.initUserData();
+      }, error => { });
+    }
   }
 
   popup(type: string) {
-    if (type == 'following') {
+    if (type === 'following') {
       this.child.initFollowing(this.username);
-    } else if (type == 'followers') {
+    } else if (type === 'followers') {
       this.child.initFollowers(this.username);
     }
   }
 
   showFollow(): boolean {
-    return this.username != localStorage.getItem('username');
+    return this.username !== localStorage.getItem('username');
   }
 
   following() {
     this.userService.getFollowers(this.username).subscribe(data => {
       this.isFollowing = false;
       data.forEach(user => {
-        if (user.username == localStorage.getItem('username')) {
+        if (user.username === localStorage.getItem('username')) {
           this.isFollowing = true;
         }
       });
