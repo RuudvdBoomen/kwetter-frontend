@@ -1,6 +1,6 @@
 export class Kweet {
   id: number;
-  createdBy: String;
+  createdBy: string;
   postedOn: Date;
   content: string;
   likes: number;

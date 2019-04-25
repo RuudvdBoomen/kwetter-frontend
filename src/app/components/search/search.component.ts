@@ -15,7 +15,7 @@ export class SearchComponent implements OnInit {
   search: string;
 
   constructor(private kweetService: KweetService, private authService: AuthService,
-    private router: Router, private route: ActivatedRoute) { }
+              private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
@@ -25,8 +25,8 @@ export class SearchComponent implements OnInit {
 
   getSearchResults() {
     this.route.paramMap.subscribe(params => {
-      if (params.get("search")) {
-        this.search = params.get("search")
+      if (params.get('search')) {
+        this.search = params.get('search');
       }
     });
 
@@ -35,12 +35,12 @@ export class SearchComponent implements OnInit {
         if (data.length > 0) {
           this.searchResults = data;
         }
-      })
+      });
     }
   }
 
   checkLoggedIn(): boolean {
-    if (this.authService.isLoggedIn() && localStorage.getItem("username") != null) {
+    if (this.authService.isLoggedIn() && localStorage.getItem('username') != null) {
       return true;
     } else {
       this.router.navigateByUrl('/login');

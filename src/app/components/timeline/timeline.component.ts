@@ -21,10 +21,10 @@ export class TimelineComponent implements OnInit {
   trendingHashtags: Hashtag[];
 
   constructor(private userService: UserService, private kweetService: KweetService,
-    private authService: AuthService, private router: Router, private formBuilder: FormBuilder) {
+              private authService: AuthService, private router: Router, private formBuilder: FormBuilder) {
     this.kweetForm = this.formBuilder.group({
       kweet: ['', Validators.required],
-    })
+    });
 
     kweetService.newKweets.subscribe(newKweet => {
       this.getTimeline();
@@ -39,29 +39,29 @@ export class TimelineComponent implements OnInit {
   getTrendingHashtags() {
     this.kweetService.getTrendingHashtags().subscribe(data => {
       this.trendingHashtags = data;
-    }, error => { })
+    }, error => { });
   }
 
   getTimeline() {
     if (this.checkLoggedIn()) {
-      this.userService.getTimeline(localStorage.getItem("username")).subscribe(data => {
+      this.userService.getTimeline(localStorage.getItem('username')).subscribe(data => {
         this.kweets = data;
-      })
+      });
     }
   }
 
   createKweet() {
-    if (localStorage.getItem("username") != null && this.kweetForm.controls.kweet.value) {
-      this.kweetService.createKweet({ content: this.kweetForm.controls.kweet.value }, localStorage.getItem("username"))
+    if (localStorage.getItem('username') != null && this.kweetForm.controls.kweet.value) {
+      this.kweetService.createKweet({ content: this.kweetForm.controls.kweet.value }, localStorage.getItem('username'))
         .subscribe(data => {
           this.getTimeline();
           this.getTrendingHashtags();
-        }, error => { })
+        }, error => { });
     }
   }
 
   checkLoggedIn(): boolean {
-    if (this.authService.isLoggedIn() && localStorage.getItem("username") != null) {
+    if (this.authService.isLoggedIn() && localStorage.getItem('username') != null) {
       return true;
     } else {
       this.router.navigateByUrl('/login');

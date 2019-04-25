@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(4)]],
       passwordRepeat: [['', Validators.required, Validators.minLength(4)]]
-    })
+    });
   }
 
   ngOnInit() {
@@ -33,8 +33,8 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    let username = this.messageForm.controls.username.value;
-    let password = this.messageForm.controls.password.value;
+    const username = this.messageForm.controls.username.value;
+    const password = this.messageForm.controls.password.value;
 
     this.authService.register({ username, email: this.messageForm.controls.email.value, password })
       .subscribe((data) => {

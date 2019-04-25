@@ -20,7 +20,7 @@ export class ProfileComponent implements OnInit {
   type: string;
 
   constructor(private userService: UserService, private authService: AuthService,
-    private route: ActivatedRoute, private router: Router) { }
+              private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
@@ -29,12 +29,12 @@ export class ProfileComponent implements OnInit {
 
   initUserData() {
     this.route.paramMap.subscribe(params => {
-      if (params.get("username")) {
-        this.username = params.get("username")
-        if (this.authService.isLoggedIn() && localStorage.getItem("username") != null) {
+      if (params.get('username')) {
+        this.username = params.get('username');
+        if (this.authService.isLoggedIn() && localStorage.getItem('username') != null) {
           this.userService.getProfile(this.username).subscribe(data => {
             this.user = data;
-          })
+          });
           this.following();
         } else {
           this.router.navigateByUrl('/login');
@@ -44,10 +44,10 @@ export class ProfileComponent implements OnInit {
   }
 
   follow() {
-    this.userService.follow(localStorage.getItem("username"), this.username).subscribe(data => {
+    this.userService.follow(localStorage.getItem('username'), this.username).subscribe(data => {
       this.isFollowing = true;
       this.initUserData();
-    }, error => { })
+    }, error => { });
   }
 
   popup(type: string) {
@@ -59,18 +59,18 @@ export class ProfileComponent implements OnInit {
   }
 
   showFollow(): boolean {
-    return this.username != localStorage.getItem("username")
+    return this.username != localStorage.getItem('username');
   }
 
   following() {
     this.userService.getFollowers(this.username).subscribe(data => {
       this.isFollowing = false;
       data.forEach(user => {
-        if (user.username == localStorage.getItem("username")) {
+        if (user.username == localStorage.getItem('username')) {
           this.isFollowing = true;
         }
       });
-    }, error => { })
+    }, error => { });
     this.isFollowing = false;
   }
 

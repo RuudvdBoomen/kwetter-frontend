@@ -15,10 +15,10 @@ export class KweetService {
   public newKweets: Subject<Kweet>;
 
   constructor(private http: HttpClient, @Inject('API_URL') private API_URL: string,
-    wsService: WebsocketService) {
-      this.newKweets = <Subject<Kweet>>wsService.connect("ws://localhost:8080/Kwetter/websocket").pipe(map(
+              wsService: WebsocketService) {
+      this.newKweets = wsService.connect('ws://localhost:8080/Kwetter/websocket').pipe(map(
       (response: MessageEvent): Kweet => {
-        let data = JSON.parse(response.data);
+        const data = JSON.parse(response.data);
         return {
           id: data.id,
           content: data.content,
@@ -28,7 +28,7 @@ export class KweetService {
           profileImage: null
         };
       }
-    ));
+    )) as Subject<Kweet>;
   }
 
   likeKweet(id: Number, username: String): Observable<Response> {

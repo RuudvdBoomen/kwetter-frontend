@@ -1,7 +1,8 @@
 <div class="kweet" *ngIf="kweet">
   <div class="image"><img src="https://via.placeholder.com/50"></div>
   <div>
-    <div (click)="getProfile()" class="creator">{{kweet.createdBy}}</div>
+    <div (click)="getProfile()" class="creator"><b>{{kweet.createdBy}}</b> @{{kweet.createdBy}}</div>
+      {{ kweet.postedOn  | date:'hh:mm'}}
     <div class="options" *ngIf="owner()">
       <img (click)="deleteKweet()" src="../../../assets/twitter-cross-2.svg"></div>
   </div>

@@ -10,13 +10,13 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 export class VerifyComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private authService: AuthService,
-    private router: Router) { }
+              private router: Router) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      if (params.get("key")) {
-        this.authService.verify(params.get("key"))
-          .subscribe(data => { this.router.navigateByUrl('/login') }, error => { })
+      if (params.get('key')) {
+        this.authService.verify(params.get('key'))
+          .subscribe(data => { this.router.navigateByUrl('/login'); }, error => { });
       }
     });
   }

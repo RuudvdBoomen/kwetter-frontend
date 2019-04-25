@@ -13,7 +13,7 @@ export class MentionsComponent implements OnInit {
   mentions: Kweet[];
 
   constructor(private kweetService: KweetService,
-    private authService: AuthService, private router: Router) { }
+              private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.getMentions();
@@ -21,14 +21,14 @@ export class MentionsComponent implements OnInit {
 
   getMentions() {
     if (this.checkLoggedIn()) {
-      this.kweetService.getMentions(localStorage.getItem("username")).subscribe(data => {
+      this.kweetService.getMentions(localStorage.getItem('username')).subscribe(data => {
         this.mentions = data;
-      })
+      });
     }
   }
 
   checkLoggedIn(): boolean {
-    if (this.authService.isLoggedIn() && localStorage.getItem("username") != null) {
+    if (this.authService.isLoggedIn() && localStorage.getItem('username') != null) {
       return true;
     } else {
       this.router.navigateByUrl('/login');

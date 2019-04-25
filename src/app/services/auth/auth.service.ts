@@ -2,7 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { tap } from "rxjs/operators";
+import { tap } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
@@ -23,8 +23,8 @@ export class AuthService {
     return this.http.post<Object>(this.API_URL + '/auth/login', userCredentials, { observe: 'response' })
       .pipe(tap((res) => {
         localStorage.setItem('username', userCredentials.username);
-        this.setSession(res.headers.get("Authorization").slice(7)) // Slice "Bearer "
-      }))
+        this.setSession(res.headers.get('Authorization').slice(7)); // Slice "Bearer "
+      }));
   }
 
   verify(key: any): Observable<Object> {
@@ -33,7 +33,7 @@ export class AuthService {
   }
 
   errorHandler(error: HttpErrorResponse) {
-    console.log('kuttt')
+    console.log('kuttt');
     return throwError(error.error || 'Server error');
   }
 
@@ -42,12 +42,12 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.removeItem("token");
+    localStorage.removeItem('token');
   }
 
   public isLoggedIn() {
-    const token = localStorage.getItem("token");
-    return !this.jwtHelper.isTokenExpired(token)
+    const token = localStorage.getItem('token');
+    return !this.jwtHelper.isTokenExpired(token);
   }
 
   isLoggedOut() {

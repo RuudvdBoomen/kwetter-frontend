@@ -18,12 +18,12 @@ export class UsersModalComponent implements OnInit {
   }
 
   initFollowing(username: string) {
-    this.title = 'Following'
+    this.title = 'Following';
     this.userService.getFollowing(username).subscribe(data => this.users = data);
   }
 
   initFollowers(username: string) {
-    this.title = 'Followers'
+    this.title = 'Followers';
     this.userService.getFollowers(username).subscribe(data => {
       this.users = data;
     });
