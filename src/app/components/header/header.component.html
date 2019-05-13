@@ -1,7 +1,7 @@
 <div class="header">
   <div class="content">
-    <a (click)="nav('timeline')" class="home">Home</a>
-    <a (click)="nav('mentions')" class="mentions">Mentions</a>
+    <a #home (click)="nav('timeline', 'home')" class="home">Home</a>
+    <a #mentions (click)="nav('mentions', 'mentions')" class="mentions">Mentions</a>
     <a (click)="nav('timeline')" class="logo"><img src="../../../assets/twitterlogo.png" height="17px"></a>
     <form [formGroup]="searchForm" (ngSubmit)="search()">
       <input formControlName="search" class="search" placeholder="Search Kwetter"></form>

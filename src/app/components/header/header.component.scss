@@ -4,8 +4,12 @@
   flex: 0 1 auto;
   width: 100%;
   text-align: center;
-  padding: 5px 0 5px 0;
   background-color: white;
+}
+
+.selected {
+  border-bottom: 2px solid #1DA1F2;
+  color: #1DA1F2;
 }
 
 .content {
@@ -22,16 +26,21 @@
   right: 50%;
 }
 
+a {
+  height: 40px;
+  line-height: 40px;
+  padding: 0 5px 0 5px;
+}
+
 .home {
   cursor: pointer;
-  line-height: 16px;
   &:before {
     content: "";
     float: left;
-    display: block;
     background: url("../../../assets/twitter-home.svg") no-repeat;
     width: 22px;
-    height: 22px;
+    height: 18px;
+    margin-top: 11px;
   }
 }
 
@@ -39,16 +48,15 @@
   cursor: pointer;
   margin-right: auto;
   margin-left: 15px;
-  line-height: 16px;
 }
 
 .mentions::before{
   content: "";
   float: left;
-  display: block;
   background: url("../../../assets/twitter-alert.svg") no-repeat;
   width: 22px;
-  height: 22px;
+  height: 18px;
+  margin-top: 11px;
 }
 
 .header a {
@@ -59,6 +67,7 @@
 .account {
   cursor: pointer;
   float: right;
+  line-height: 35px;
   margin: 0;
   padding: 0;
 }

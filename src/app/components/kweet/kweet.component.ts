@@ -13,11 +13,24 @@ import { formatDate, DatePipe } from '@angular/common';
 export class KweetComponent implements OnInit {
   // tslint:disable-next-line:no-input-rename
   @Input('parentData') public kweet: Kweet;
+  liked = false;
 
   constructor(private kweetService: KweetService, private router: Router) { }
 
   ngOnInit() {
     this.kweet.postedOn = new Date(this.kweet.postedOn.toString().slice(0, this.kweet.postedOn.toString().length - 5));
+    this.userLiked();
+  }
+
+  userLiked() {
+    this.kweetService.getKweetLikes(this.kweet.id)
+      .subscribe(data => {
+        data.forEach(user => {
+          if (user.username === localStorage.getItem('username')) {
+            this.liked = true;
+          }
+        });
+      }, error => { });
   }
 
   owner(): boolean {
@@ -30,7 +43,22 @@ export class KweetComponent implements OnInit {
   likeKweet() {
     if (localStorage.getItem('username') != null) {
       this.kweetService.likeKweet(this.kweet.id, localStorage.getItem('username'))
-        .subscribe(data => { this.kweet.likes++; }, error => { });
+        .subscribe(data => {
+          this.kweet.likes++;
+          this.liked = true;
+        }, error => { });
+    } else {
+      console.log('your not logged in');
+    }
+  }
+
+  unlikeKweet() {
+    if (localStorage.getItem('username') != null) {
+      this.kweetService.unlikeKweet(this.kweet.id, localStorage.getItem('username'))
+        .subscribe(data => {
+          this.kweet.likes--;
+          this.liked = false;
+        }, error => { });
     } else {
       console.log('your not logged in');
     }

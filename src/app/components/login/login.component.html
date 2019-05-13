@@ -15,9 +15,16 @@
 
     <input type="submit" value="Log In">
     <br>
-    <div *ngIf="loginError">
+    <div *ngIf="passwordError">
       <div>Wrong username/password combination</div>
     </div>
+    <div *ngIf="notFoundError">
+      <div>No user found with the given username</div>
+    </div>
+    <div *ngIf="verifiedError">
+      <div>You will have to verify your account first</div>
+    </div>
+
 
     <a href="/register"> Don't have an account yet?</a>
 

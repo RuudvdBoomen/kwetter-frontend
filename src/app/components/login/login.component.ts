@@ -12,7 +12,9 @@ export class LoginComponent implements OnInit {
 
   messageForm: FormGroup;
   submitted = false;
-  loginError = false;
+  verifiedError = false;
+  passwordError = false;
+  notFoundError = false;
 
   constructor(private authService: AuthService, private formBuilder: FormBuilder, private router: Router) {
     this.messageForm = this.formBuilder.group({
@@ -36,7 +38,16 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl('/timeline');
       },
         error => {
-          this.loginError = true;
+          this.notFoundError = false;
+          this.verifiedError = false;
+          this.passwordError = false;
+          if (error.status === 404) {
+            this.notFoundError = true;
+          } else if (error.status === 401) {
+            this.verifiedError = true;
+          } else if (error.status === 400) {
+            this.passwordError = true;
+          }
         });
   }
 

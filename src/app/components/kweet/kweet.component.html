@@ -2,12 +2,17 @@
   <div class="image"><img src="https://via.placeholder.com/50"></div>
   <div>
     <div (click)="getProfile()" class="creator"><b>{{kweet.createdBy}}</b> @{{kweet.createdBy}}</div>
-      {{ kweet.postedOn  | date:'hh:mm'}}
+    {{ kweet.postedOn  | date:'HH:mm'}}
     <div class="options" *ngIf="owner()">
       <img (click)="deleteKweet()" src="../../../assets/twitter-cross-2.svg"></div>
   </div>
   <div class="content">{{kweet.content}}</div>
   <div class="likes">
-    <a (click)="likeKweet()" class="like"><img src="../../../assets/twitter-like-outline.svg" height="15px"></a>
+    <a *ngIf="!liked" (click)="likeKweet()" class="like">
+      <img src="../../../assets/twitter-like-outline.svg" height="15px">
+    </a>
+    <a *ngIf="liked" (click)="unlikeKweet()" class="like">
+      <img src="../../../assets/twitter-like.svg" height="15px">
+    </a>
     {{kweet.likes}}</div>
 </div>

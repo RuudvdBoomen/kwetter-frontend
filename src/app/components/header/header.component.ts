@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth/auth.service';
@@ -11,7 +11,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 export class HeaderComponent implements OnInit {
   searchForm: FormGroup;
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private authService: AuthService) {
+  constructor(private router: Router, private formBuilder: FormBuilder, private authService: AuthService, private renderer: Renderer2) {
     this.searchForm = this.formBuilder.group({
       search: ['', Validators.required],
     });
@@ -20,13 +20,19 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
-  nav(url: string) {
+  nav(url: string, element: string) {
     if (url === 'profile') {
       if (localStorage.getItem('username') != null) {
         this.router.navigateByUrl('/profile/' + localStorage.getItem('username'));
       }
     } else {
       this.router.navigateByUrl('/' + url);
+    }
+    if (document.getElementsByClassName('selected')[0]) {
+      this.renderer.removeClass(document.getElementsByClassName('selected')[0], 'selected');
+    }
+    if (element) {
+      this.renderer.addClass(document.getElementsByClassName(element)[0], 'selected');
     }
   }
 

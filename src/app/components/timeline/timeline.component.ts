@@ -27,7 +27,7 @@ export class TimelineComponent implements OnInit {
     });
 
     kweetService.newKweets.subscribe(newKweet => {
-      this.getTimeline();
+      this.kweets.unshift(newKweet);
     });
   }
 

@@ -6,6 +6,7 @@ import { catchError } from 'rxjs/operators';
 import { Kweet } from '../../models/kweet';
 import { Hashtag } from '../../models/hashtag';
 import { WebsocketService } from '../websocket/websocket.service';
+import { User } from 'src/app/models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +15,8 @@ export class KweetService {
 
   public newKweets: Subject<Kweet>;
 
-  constructor(private http: HttpClient, @Inject('API_URL') private API_URL: string,
-              wsService: WebsocketService) {
-      this.newKweets = wsService.connect('ws://localhost:8080/Kwetter/websocket').pipe(map(
+  constructor(private http: HttpClient, @Inject('API_URL') private API_URL: string, wsService: WebsocketService) {
+    this.newKweets = wsService.connect('ws://localhost:8080/Kwetter/websocket/' + localStorage.getItem('token')).pipe(map(
       (response: MessageEvent): Kweet => {
         const data = JSON.parse(response.data);
         return {
@@ -32,7 +32,17 @@ export class KweetService {
   }
 
   likeKweet(id: number, username: string): Observable<Response> {
-    return this.http.put<Response>(this.API_URL + `/kweet/${id}/like/${username}`, {})
+    return this.http.put<Response>(this.API_URL + `/kweet/${id}/like`, {})
+      .pipe(catchError(this.errorHandler));
+  }
+
+  unlikeKweet(id: number, username: string): Observable<Response> {
+    return this.http.put<Response>(this.API_URL + `/kweet/${id}/unlike`, {})
+      .pipe(catchError(this.errorHandler));
+  }
+
+  getKweetLikes(id: number) {
+    return this.http.get<User[]>(this.API_URL + `/kweet/${id}/likes`)
       .pipe(catchError(this.errorHandler));
   }
 
@@ -48,7 +58,7 @@ export class KweetService {
 
   getKweetByContent(content: string) {
     return this.http.get<Kweet[]>(this.API_URL + `/kweet/${content}`)
-    .pipe(catchError(this.errorHandler));
+      .pipe(catchError(this.errorHandler));
   }
 
   getTrendingHashtags(): Observable<Hashtag[]> {
